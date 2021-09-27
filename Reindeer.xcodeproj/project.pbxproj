@@ -14,7 +14,56 @@
 		C7C7DF042701C16200AE8F14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7C7DF032701C16200AE8F14 /* Assets.xcassets */; };
 		C7C7DF072701C16200AE8F14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7C7DF052701C16200AE8F14 /* LaunchScreen.storyboard */; };
 		C7C7DF0A2701C16200AE8F14 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C7DF092701C16200AE8F14 /* main.m */; };
+		C7C7DF192701C27A00AE8F14 /* ReindeerFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = C7C7DF172701C27A00AE8F14 /* ReindeerFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C7C7DF1C2701C27A00AE8F14 /* ReindeerFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7C7DF152701C27A00AE8F14 /* ReindeerFramework.framework */; };
+		C7C7DF1D2701C27A00AE8F14 /* ReindeerFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C7C7DF152701C27A00AE8F14 /* ReindeerFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C7C7DF232701C2FB00AE8F14 /* ReindeerFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C7DF222701C2FB00AE8F14 /* ReindeerFramework.m */; };
+		C7C7DF2C2701F9DE00AE8F14 /* ReindeerStaticLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C7DF2B2701F9DE00AE8F14 /* ReindeerStaticLibrary.m */; };
+		C7C7DF2D2701F9DE00AE8F14 /* ReindeerStaticLibrary.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C7C7DF2A2701F9DE00AE8F14 /* ReindeerStaticLibrary.h */; };
+		C7C7DF322701FAD300AE8F14 /* libReindeerStaticLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7C7DF282701F9DE00AE8F14 /* libReindeerStaticLibrary.a */; };
+		C7C7DF382701FC0F00AE8F14 /* funcs.c in Sources */ = {isa = PBXBuildFile; fileRef = C7C7DF372701FC0F00AE8F14 /* funcs.c */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C7C7DF1A2701C27A00AE8F14 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C7C7DEEC2701C15F00AE8F14 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C7C7DF142701C27A00AE8F14;
+			remoteInfo = ReindeerFramework;
+		};
+		C7C7DF332701FAD300AE8F14 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C7C7DEEC2701C15F00AE8F14 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C7C7DF272701F9DE00AE8F14;
+			remoteInfo = ReindeerStaticLibrary;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C7C7DF212701C27A00AE8F14 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C7C7DF1D2701C27A00AE8F14 /* ReindeerFramework.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C7C7DF262701F9DE00AE8F14 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				C7C7DF2D2701F9DE00AE8F14 /* ReindeerStaticLibrary.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		C7C7DEF42701C16000AE8F14 /* Reindeer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reindeer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -29,10 +78,36 @@
 		C7C7DF062701C16200AE8F14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C7C7DF082701C16200AE8F14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7C7DF092701C16200AE8F14 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C7C7DF152701C27A00AE8F14 /* ReindeerFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ReindeerFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7C7DF172701C27A00AE8F14 /* ReindeerFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReindeerFramework.h; sourceTree = "<group>"; };
+		C7C7DF182701C27A00AE8F14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C7C7DF222701C2FB00AE8F14 /* ReindeerFramework.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReindeerFramework.m; sourceTree = "<group>"; };
+		C7C7DF282701F9DE00AE8F14 /* libReindeerStaticLibrary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libReindeerStaticLibrary.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7C7DF2A2701F9DE00AE8F14 /* ReindeerStaticLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReindeerStaticLibrary.h; sourceTree = "<group>"; };
+		C7C7DF2B2701F9DE00AE8F14 /* ReindeerStaticLibrary.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReindeerStaticLibrary.m; sourceTree = "<group>"; };
+		C7C7DF352701FB0B00AE8F14 /* Reindeer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Reindeer.entitlements; sourceTree = "<group>"; };
+		C7C7DF362701FC0F00AE8F14 /* funcs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = funcs.h; sourceTree = "<group>"; };
+		C7C7DF372701FC0F00AE8F14 /* funcs.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = funcs.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		C7C7DEF12701C16000AE8F14 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7C7DF1C2701C27A00AE8F14 /* ReindeerFramework.framework in Frameworks */,
+				C7C7DF322701FAD300AE8F14 /* libReindeerStaticLibrary.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C7C7DF122701C27A00AE8F14 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C7C7DF252701F9DE00AE8F14 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -46,7 +121,10 @@
 			isa = PBXGroup;
 			children = (
 				C7C7DEF62701C16000AE8F14 /* Reindeer */,
+				C7C7DF162701C27A00AE8F14 /* ReindeerFramework */,
+				C7C7DF292701F9DE00AE8F14 /* ReindeerStaticLibrary */,
 				C7C7DEF52701C16000AE8F14 /* Products */,
+				C7C7DF312701FAD300AE8F14 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,6 +132,8 @@
 			isa = PBXGroup;
 			children = (
 				C7C7DEF42701C16000AE8F14 /* Reindeer.app */,
+				C7C7DF152701C27A00AE8F14 /* ReindeerFramework.framework */,
+				C7C7DF282701F9DE00AE8F14 /* libReindeerStaticLibrary.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -61,6 +141,7 @@
 		C7C7DEF62701C16000AE8F14 /* Reindeer */ = {
 			isa = PBXGroup;
 			children = (
+				C7C7DF352701FB0B00AE8F14 /* Reindeer.entitlements */,
 				C7C7DEF72701C16000AE8F14 /* AppDelegate.h */,
 				C7C7DEF82701C16000AE8F14 /* AppDelegate.m */,
 				C7C7DEFA2701C16000AE8F14 /* SceneDelegate.h */,
@@ -76,7 +157,46 @@
 			path = Reindeer;
 			sourceTree = "<group>";
 		};
+		C7C7DF162701C27A00AE8F14 /* ReindeerFramework */ = {
+			isa = PBXGroup;
+			children = (
+				C7C7DF172701C27A00AE8F14 /* ReindeerFramework.h */,
+				C7C7DF182701C27A00AE8F14 /* Info.plist */,
+				C7C7DF222701C2FB00AE8F14 /* ReindeerFramework.m */,
+			);
+			path = ReindeerFramework;
+			sourceTree = "<group>";
+		};
+		C7C7DF292701F9DE00AE8F14 /* ReindeerStaticLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				C7C7DF2A2701F9DE00AE8F14 /* ReindeerStaticLibrary.h */,
+				C7C7DF2B2701F9DE00AE8F14 /* ReindeerStaticLibrary.m */,
+				C7C7DF362701FC0F00AE8F14 /* funcs.h */,
+				C7C7DF372701FC0F00AE8F14 /* funcs.c */,
+			);
+			path = ReindeerStaticLibrary;
+			sourceTree = "<group>";
+		};
+		C7C7DF312701FAD300AE8F14 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		C7C7DF102701C27A00AE8F14 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7C7DF192701C27A00AE8F14 /* ReindeerFramework.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		C7C7DEF32701C16000AE8F14 /* Reindeer */ = {
@@ -86,15 +206,53 @@
 				C7C7DEF02701C16000AE8F14 /* Sources */,
 				C7C7DEF12701C16000AE8F14 /* Frameworks */,
 				C7C7DEF22701C16000AE8F14 /* Resources */,
+				C7C7DF212701C27A00AE8F14 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				C7C7DF1B2701C27A00AE8F14 /* PBXTargetDependency */,
+				C7C7DF342701FAD300AE8F14 /* PBXTargetDependency */,
 			);
 			name = Reindeer;
 			productName = Reindeer;
 			productReference = C7C7DEF42701C16000AE8F14 /* Reindeer.app */;
 			productType = "com.apple.product-type.application";
+		};
+		C7C7DF142701C27A00AE8F14 /* ReindeerFramework */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C7C7DF1E2701C27A00AE8F14 /* Build configuration list for PBXNativeTarget "ReindeerFramework" */;
+			buildPhases = (
+				C7C7DF102701C27A00AE8F14 /* Headers */,
+				C7C7DF112701C27A00AE8F14 /* Sources */,
+				C7C7DF122701C27A00AE8F14 /* Frameworks */,
+				C7C7DF132701C27A00AE8F14 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ReindeerFramework;
+			productName = ReindeerFramework;
+			productReference = C7C7DF152701C27A00AE8F14 /* ReindeerFramework.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		C7C7DF272701F9DE00AE8F14 /* ReindeerStaticLibrary */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C7C7DF2E2701F9DE00AE8F14 /* Build configuration list for PBXNativeTarget "ReindeerStaticLibrary" */;
+			buildPhases = (
+				C7C7DF242701F9DE00AE8F14 /* Sources */,
+				C7C7DF252701F9DE00AE8F14 /* Frameworks */,
+				C7C7DF262701F9DE00AE8F14 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ReindeerStaticLibrary;
+			productName = ReindeerStaticLibrary;
+			productReference = C7C7DF282701F9DE00AE8F14 /* libReindeerStaticLibrary.a */;
+			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
@@ -105,6 +263,12 @@
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
 					C7C7DEF32701C16000AE8F14 = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+					C7C7DF142701C27A00AE8F14 = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+					C7C7DF272701F9DE00AE8F14 = {
 						CreatedOnToolsVersion = 12.5.1;
 					};
 				};
@@ -123,6 +287,8 @@
 			projectRoot = "";
 			targets = (
 				C7C7DEF32701C16000AE8F14 /* Reindeer */,
+				C7C7DF142701C27A00AE8F14 /* ReindeerFramework */,
+				C7C7DF272701F9DE00AE8F14 /* ReindeerStaticLibrary */,
 			);
 		};
 /* End PBXProject section */
@@ -135,6 +301,13 @@
 				C7C7DF072701C16200AE8F14 /* LaunchScreen.storyboard in Resources */,
 				C7C7DF042701C16200AE8F14 /* Assets.xcassets in Resources */,
 				C7C7DF022701C16000AE8F14 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C7C7DF132701C27A00AE8F14 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,7 +325,37 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C7C7DF112701C27A00AE8F14 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7C7DF232701C2FB00AE8F14 /* ReindeerFramework.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C7C7DF242701F9DE00AE8F14 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7C7DF2C2701F9DE00AE8F14 /* ReindeerStaticLibrary.m in Sources */,
+				C7C7DF382701FC0F00AE8F14 /* funcs.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C7C7DF1B2701C27A00AE8F14 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C7C7DF142701C27A00AE8F14 /* ReindeerFramework */;
+			targetProxy = C7C7DF1A2701C27A00AE8F14 /* PBXContainerItemProxy */;
+		};
+		C7C7DF342701FAD300AE8F14 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C7C7DF272701F9DE00AE8F14 /* ReindeerStaticLibrary */;
+			targetProxy = C7C7DF332701FAD300AE8F14 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C7C7DF002701C16000AE8F14 /* Main.storyboard */ = {
@@ -291,7 +494,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Reindeer/Reindeer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 69W4K4QU43;
 				INFOPLIST_FILE = Reindeer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -299,6 +504,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsupportsoftware.Reindeer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -308,7 +514,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Reindeer/Reindeer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 69W4K4QU43;
 				INFOPLIST_FILE = Reindeer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -316,6 +524,79 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsupportsoftware.Reindeer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C7C7DF1F2701C27A00AE8F14 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = ReindeerFramework/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.netsupportsoftware.ReindeerFramework;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		C7C7DF202701C27A00AE8F14 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = ReindeerFramework/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.netsupportsoftware.ReindeerFramework;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		C7C7DF2F2701F9DE00AE8F14 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C7C7DF302701F9DE00AE8F14 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -337,6 +618,24 @@
 			buildConfigurations = (
 				C7C7DF0E2701C16200AE8F14 /* Debug */,
 				C7C7DF0F2701C16200AE8F14 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C7C7DF1E2701C27A00AE8F14 /* Build configuration list for PBXNativeTarget "ReindeerFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C7C7DF1F2701C27A00AE8F14 /* Debug */,
+				C7C7DF202701C27A00AE8F14 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C7C7DF2E2701F9DE00AE8F14 /* Build configuration list for PBXNativeTarget "ReindeerStaticLibrary" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C7C7DF2F2701F9DE00AE8F14 /* Debug */,
+				C7C7DF302701F9DE00AE8F14 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

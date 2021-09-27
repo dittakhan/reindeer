@@ -6,6 +6,9 @@
 //
 
 #import "AppDelegate.h"
+#import <ReindeerFramework/ReindeerFramework.h>
+#import "ReindeerStaticLibrary.h"
+#include "funcs.h"
 
 @interface AppDelegate ()
 
@@ -16,6 +19,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    NSLog(@"Launching Reindeer");
+    reindeerFrameworkTest();
+    reindeerStaticLibraryTest();
+    reinderLovesCFunctions();
     return YES;
 }
 
