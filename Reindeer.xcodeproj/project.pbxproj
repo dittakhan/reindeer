@@ -22,6 +22,7 @@
 		C7C7DF2D2701F9DE00AE8F14 /* ReindeerStaticLibrary.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C7C7DF2A2701F9DE00AE8F14 /* ReindeerStaticLibrary.h */; };
 		C7C7DF322701FAD300AE8F14 /* libReindeerStaticLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7C7DF282701F9DE00AE8F14 /* libReindeerStaticLibrary.a */; };
 		C7C7DF382701FC0F00AE8F14 /* funcs.c in Sources */ = {isa = PBXBuildFile; fileRef = C7C7DF372701FC0F00AE8F14 /* funcs.c */; };
+		C7E36AB3270B34C3002B0552 /* ReindeerView.mm in Sources */ = {isa = PBXBuildFile; fileRef = C7E36AB2270B34C3002B0552 /* ReindeerView.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,8 @@
 		C7C7DF352701FB0B00AE8F14 /* Reindeer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Reindeer.entitlements; sourceTree = "<group>"; };
 		C7C7DF362701FC0F00AE8F14 /* funcs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = funcs.h; sourceTree = "<group>"; };
 		C7C7DF372701FC0F00AE8F14 /* funcs.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = funcs.c; sourceTree = "<group>"; };
+		C7E36AB1270B34C3002B0552 /* ReindeerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReindeerView.h; sourceTree = "<group>"; };
+		C7E36AB2270B34C3002B0552 /* ReindeerView.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ReindeerView.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +156,8 @@
 				C7C7DF052701C16200AE8F14 /* LaunchScreen.storyboard */,
 				C7C7DF082701C16200AE8F14 /* Info.plist */,
 				C7C7DF092701C16200AE8F14 /* main.m */,
+				C7E36AB1270B34C3002B0552 /* ReindeerView.h */,
+				C7E36AB2270B34C3002B0552 /* ReindeerView.mm */,
 			);
 			path = Reindeer;
 			sourceTree = "<group>";
@@ -321,6 +326,7 @@
 				C7C7DEFF2701C16000AE8F14 /* ViewController.m in Sources */,
 				C7C7DEF92701C16000AE8F14 /* AppDelegate.m in Sources */,
 				C7C7DF0A2701C16200AE8F14 /* main.m in Sources */,
+				C7E36AB3270B34C3002B0552 /* ReindeerView.mm in Sources */,
 				C7C7DEFC2701C16000AE8F14 /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
