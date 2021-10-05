@@ -6,9 +6,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ReindeerView.h"
 
 @interface ViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet ReindeerView *reindeerView;
 
 @end
 

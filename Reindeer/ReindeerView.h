@@ -5,11 +5,15 @@
 //  Created by Ditta on 04/10/2021.
 //
 
-#import <UIKit/UIKit.h>
+#import <MetalKit/MetalKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ReindeerView : UIView
+@interface ReindeerView : MTKView
+
+@property (nonatomic, strong) id <MTLTexture> texture;
+
+- (void)initWithImageNamed:(NSString*)filename;
 
 @end
 
