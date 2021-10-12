@@ -24,6 +24,8 @@
 		C7C7DF382701FC0F00AE8F14 /* funcs.c in Sources */ = {isa = PBXBuildFile; fileRef = C7C7DF372701FC0F00AE8F14 /* funcs.c */; };
 		C7E36AB5270B5D9A002B0552 /* Rudolph.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C7E36AB4270B5D9A002B0552 /* Rudolph.jpg */; };
 		C7E36AB8270C8E5E002B0552 /* ReindeerRenderer.mm in Sources */ = {isa = PBXBuildFile; fileRef = C7E36AB6270C8E5E002B0552 /* ReindeerRenderer.mm */; };
+		C7E36ABB2715EDC2002B0552 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = C7E36ABA2715EDC2002B0552 /* Shaders.metal */; };
+		C7E36ABE2716088C002B0552 /* AAPLTransforms.mm in Sources */ = {isa = PBXBuildFile; fileRef = C7E36ABC2716088C002B0552 /* AAPLTransforms.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +95,10 @@
 		C7E36AB4270B5D9A002B0552 /* Rudolph.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Rudolph.jpg; sourceTree = "<group>"; };
 		C7E36AB6270C8E5E002B0552 /* ReindeerRenderer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ReindeerRenderer.mm; sourceTree = "<group>"; };
 		C7E36AB7270C8E5E002B0552 /* ReindeerRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReindeerRenderer.h; sourceTree = "<group>"; };
+		C7E36AB92715EB30002B0552 /* ShaderTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShaderTypes.h; sourceTree = "<group>"; };
+		C7E36ABA2715EDC2002B0552 /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
+		C7E36ABC2716088C002B0552 /* AAPLTransforms.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AAPLTransforms.mm; sourceTree = "<group>"; };
+		C7E36ABD2716088C002B0552 /* AAPLTransforms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLTransforms.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +152,8 @@
 		C7C7DEF62701C16000AE8F14 /* Reindeer */ = {
 			isa = PBXGroup;
 			children = (
+				C7E36ABD2716088C002B0552 /* AAPLTransforms.h */,
+				C7E36ABC2716088C002B0552 /* AAPLTransforms.mm */,
 				C7E36AB4270B5D9A002B0552 /* Rudolph.jpg */,
 				C7C7DF352701FB0B00AE8F14 /* Reindeer.entitlements */,
 				C7C7DEF72701C16000AE8F14 /* AppDelegate.h */,
@@ -161,6 +169,8 @@
 				C7C7DF092701C16200AE8F14 /* main.m */,
 				C7E36AB7270C8E5E002B0552 /* ReindeerRenderer.h */,
 				C7E36AB6270C8E5E002B0552 /* ReindeerRenderer.mm */,
+				C7E36AB92715EB30002B0552 /* ShaderTypes.h */,
+				C7E36ABA2715EDC2002B0552 /* Shaders.metal */,
 			);
 			path = Reindeer;
 			sourceTree = "<group>";
@@ -327,7 +337,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7E36ABB2715EDC2002B0552 /* Shaders.metal in Sources */,
 				C7E36AB8270C8E5E002B0552 /* ReindeerRenderer.mm in Sources */,
+				C7E36ABE2716088C002B0552 /* AAPLTransforms.mm in Sources */,
 				C7C7DEFF2701C16000AE8F14 /* ViewController.m in Sources */,
 				C7C7DEF92701C16000AE8F14 /* AppDelegate.m in Sources */,
 				C7C7DF0A2701C16200AE8F14 /* main.m in Sources */,
