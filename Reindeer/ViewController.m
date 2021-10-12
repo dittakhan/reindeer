@@ -6,18 +6,45 @@
 //
 
 #import "ViewController.h"
+#import "ReindeerRenderer.h"
+
 
 @interface ViewController ()
 
 @end
 
 @implementation ViewController
+{
+    MTKView *_view;
+    
+    ReindeerRenderer *_renderer;
+}
 
 - (void)viewDidLoad {
-    NSLog(@"ViewController viewDidLoad");
     [super viewDidLoad];
     
-    [self.reindeerView initWithImageNamed: @"Rudolph.jpg"];
+    _view = (MTKView *)self.view;
+    
+    //_view.enableSetNeedsDisplay = YES;
+    
+    _view.device = MTLCreateSystemDefaultDevice();
+    
+    _view.clearColor = MTLClearColorMake(1.0, 0.5, 0.5, 1.0); // salmon
+
+    _renderer = [[ReindeerRenderer alloc] initWithMTKView: _view];
+
+    if(_renderer) {
+        // Initialize the renderer with the view size.
+        [_renderer mtkView: _view drawableSizeWillChange: _view.drawableSize];
+
+       _view.delegate = _renderer;
+    }
+    else {
+        NSLog(@"Renderer initialization failed");
+        return;
+    }
+    
+    [_renderer loadImageNamed: @"Rudolph.jpg"];
 }
 
 @end

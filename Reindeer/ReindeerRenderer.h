@@ -9,5 +9,7 @@ Header for a platform independent renderer class, which performs Metal setup and
 
 - (nonnull instancetype)initWithMTKView:(nonnull MTKView *)view;
 
+- (void) loadImageNamed:(nonnull NSString *)name;
+
 @end
 
