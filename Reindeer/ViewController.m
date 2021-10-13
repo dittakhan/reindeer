@@ -29,7 +29,8 @@
     
     _view.device = MTLCreateSystemDefaultDevice();
     
-    _view.clearColor = MTLClearColorMake(1.0, 0.5, 0.5, 1.0); // salmon
+    _view.clearColor = MTLClearColorMake(0.0, 0.0, 0.0, 1.0);
+   // _view.clearColor = MTLClearColorMake(1.0, 0.5, 0.5, 1.0); // salmon
 
     _renderer = [[ReindeerRenderer alloc] initWithMTKView: _view];
 
@@ -44,7 +45,8 @@
         return;
     }
     
-    [_renderer loadImageNamed: @"Rudolph.jpg"];
+//    [_renderer loadImageNamed: @"Rudolph.jpg"];
+    [_renderer loadImageNamed: @"Linux-Desktop.jpg"];
 }
 
 @end

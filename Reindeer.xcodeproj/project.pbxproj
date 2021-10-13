@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C7678E0D271766DB00B0B920 /* Linux-Desktop.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C7678E0C271766DB00B0B920 /* Linux-Desktop.jpg */; };
 		C7C7DEF92701C16000AE8F14 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C7DEF82701C16000AE8F14 /* AppDelegate.m */; };
 		C7C7DEFC2701C16000AE8F14 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C7DEFB2701C16000AE8F14 /* SceneDelegate.m */; };
 		C7C7DEFF2701C16000AE8F14 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C7DEFE2701C16000AE8F14 /* ViewController.m */; };
@@ -69,6 +70,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C7678E0C271766DB00B0B920 /* Linux-Desktop.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Linux-Desktop.jpg"; sourceTree = "<group>"; };
 		C7C7DEF42701C16000AE8F14 /* Reindeer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reindeer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7C7DEF72701C16000AE8F14 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C7C7DEF82701C16000AE8F14 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 		C7C7DEF62701C16000AE8F14 /* Reindeer */ = {
 			isa = PBXGroup;
 			children = (
+				C7678E0C271766DB00B0B920 /* Linux-Desktop.jpg */,
 				C7E36AB4270B5D9A002B0552 /* Rudolph.jpg */,
 				C7C7DF352701FB0B00AE8F14 /* Reindeer.entitlements */,
 				C7C7DEF72701C16000AE8F14 /* AppDelegate.h */,
@@ -315,6 +318,7 @@
 				C7C7DF072701C16200AE8F14 /* LaunchScreen.storyboard in Resources */,
 				C7C7DF042701C16200AE8F14 /* Assets.xcassets in Resources */,
 				C7C7DF022701C16000AE8F14 /* Main.storyboard in Resources */,
+				C7678E0D271766DB00B0B920 /* Linux-Desktop.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

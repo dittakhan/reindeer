@@ -6,34 +6,6 @@ Implementation of a platform independent renderer class, which performs Metal se
 #import "ReindeerRenderer.h"
 #import "ShaderTypes.h"
 
-//static const uint32_t kCntQuadTexCoords = 6;
-//static const uint32_t kSzQuadTexCoords  = kCntQuadTexCoords * sizeof(simd::float2);
-//
-//static const uint32_t kCntQuadVertices = kCntQuadTexCoords;
-//static const uint32_t kSzQuadVertices  = kCntQuadVertices * sizeof(simd::float4);
-//
-//static const simd::float4 kQuadVertices[kCntQuadVertices] =
-//{
-//    { -1.0f,  -1.0f, 0.0f, 1.0f },
-//    {  1.0f,  -1.0f, 0.0f, 1.0f },
-//    { -1.0f,   1.0f, 0.0f, 1.0f },
-//
-//    {  1.0f,  -1.0f, 0.0f, 1.0f },
-//    { -1.0f,   1.0f, 0.0f, 1.0f },
-//    {  1.0f,   1.0f, 0.0f, 1.0f }
-//};
-//
-//static const simd::float2 kQuadTexCoords[kCntQuadTexCoords] =
-//{
-//    { 0.0f, 0.0f },
-//    { 1.0f, 0.0f },
-//    { 0.0f, 1.0f },
-//
-//    { 1.0f, 0.0f },
-//    { 0.0f, 1.0f },
-//    { 1.0f, 1.0f }
-//};
-
 // Main class performing the rendering
 @implementation ReindeerRenderer
 {
@@ -52,9 +24,6 @@ Implementation of a platform independent renderer class, which performs Metal se
     // The number of vertices in the vertex buffer.
     NSUInteger _numVertices;
     
-//    // The texture coords data
-//    id<MTLBuffer> _textureCoordinates;
-
     // The current size of the view
     vector_uint2 _viewportSize;
 }
@@ -67,38 +36,6 @@ Implementation of a platform independent renderer class, which performs Metal se
     {
         _device = view.device;
         
-        // Set up a simple MTLBuffer with vertices which include texture coordinates
-        static const Vertex quadVertices[] =
-        {
-            // Pixel positions, Texture coordinates
-            { {  500,  -500 },  { 1.f, 1.f } },
-            { { -500,  -500 },  { 0.f, 1.f } },
-            { { -500,   500 },  { 0.f, 0.f } },
-
-            { {  500,  -500 },  { 1.f, 1.f } },
-            { { -500,   500 },  { 0.f, 0.f } },
-            { {  500,   500 },  { 1.f, 0.f } },
-        };
-        
-        /*
-        // Create a vertex buffer, and initialize it with the quadVertices array
-        _vertices = [_device newBufferWithBytes:kQuadVertices
-                                         length:kSzQuadVertices
-                                        options:MTLResourceOptionCPUCacheModeDefault];
-        
-        _textureCoordinates = [_device newBufferWithBytes:kQuadTexCoords
-                                                   length:kSzQuadTexCoords
-                                                  options:MTLResourceOptionCPUCacheModeDefault];
-         */
-        
-        // Create a vertex buffer, and initialize it with the quadVertices array
-        _vertices = [_device newBufferWithBytes:quadVertices
-                                         length:sizeof(quadVertices)
-                                        options:MTLResourceStorageModeShared];
-        
-        // Calculate the number of vertices by dividing the byte length by the size of each vertex
-        _numVertices = sizeof(quadVertices) / sizeof(Vertex);
-
         // Create the render pipeline
         
         // Load the shaders from the default library
@@ -132,52 +69,75 @@ Implementation of a platform independent renderer class, which performs Metal se
     UIImage *image = [UIImage imageNamed:name];
     
     if (image) {
-        NSLog(@"image %@ is %dx%d", name, (int)image.size.width, (int)image.size.height);
+        float w = image.size.width;
+        float h = image.size.height;
+        NSLog(@"image %@ is %dx%d", name, (int)w, (int)h);
         
         MTKTextureLoader *loader = [[MTKTextureLoader alloc] initWithDevice: _device];
-        NSDictionary *options = @{ MTKTextureLoaderOptionSRGB : @false, MTKTextureLoaderOptionOrigin : @true };
+        NSDictionary *options = @{ MTKTextureLoaderOptionSRGB : @false, MTKTextureLoaderOptionOrigin: MTKTextureLoaderOriginTopLeft };
         NSError *error = nil;
         
         _texture = [loader newTextureWithCGImage:image.CGImage options: options error: &error];
         if (error)
             NSLog(@"newTextureWithCGImage err: %@", [error localizedDescription]);
         
-        /*
-        // Prepare the texture descriptor
-        MTLTextureDescriptor* textureDescriptor = [[MTLTextureDescriptor alloc] init];
-        
-        // Indicate that each pixel has a blue, green, red, and alpha channel, where each channel is
-        // an 8-bit unsigned normalized value (i.e. 0 maps to 0.0 and 255 maps to 1.0)
-        textureDescriptor.pixelFormat = MTLPixelFormatBGRA8Unorm;
-        
-        // Set the pixel dimensions of the texture
-        textureDescriptor.width = image.size.width;
-        textureDescriptor.height = image.size.height;
-        
-        // Create the texture from the device by using the descriptor
-        id<MTLTexture> texture = [_device newTextureWithDescriptor:textureDescriptor];
-        
-        // Calculate the number of bytes per row in the image.
-        NSUInteger bytesPerRow = 4 * image.size.width;
-        
-        MTLRegion region = {
-            { 0, 0, 0 },         // MTLOrigin
-            { textureDescriptor.width, textureDescriptor.height, 1 }   // MTLSize
+        // Set up a simple MTLBuffer with vertices which include texture coordinates
+        static const Vertex quadVertices[] =
+        {
+            // Pixel positions, Texture coordinates
+            { {  w, -h },  { 1.f, 1.f } },
+            { { -w, -h },  { 0.f, 1.f } },
+            { { -w,  h },  { 0.f, 0.f } },
+
+            { {  w, -h },  { 1.f, 1.f } },
+            { { -w,  h },  { 0.f, 0.f } },
+            { {  w,  h },  { 1.f, 0.f } },
         };
+                
+        // Create a vertex buffer, and initialize it with the quadVertices array
+        _vertices = [_device newBufferWithBytes:quadVertices
+                                         length:sizeof(quadVertices)
+                                        options:MTLResourceStorageModeShared];
         
-        // Copy the bytes from the data object into the texture
-        [texture replaceRegion:region
-                    mipmapLevel:0
-                    withBytes:image.bytes
-                    bytesPerRow:bytesPerRow];
-        */
+        // Calculate the number of vertices by dividing the byte length by the size of each vertex
+        _numVertices = sizeof(quadVertices) / sizeof(Vertex);
+        
+        /*
+         // Prepare the texture descriptor
+         MTLTextureDescriptor* textureDescriptor = [[MTLTextureDescriptor alloc] init];
+         
+         // Indicate that each pixel has a blue, green, red, and alpha channel, where each channel is
+         // an 8-bit unsigned normalized value (i.e. 0 maps to 0.0 and 255 maps to 1.0)
+         textureDescriptor.pixelFormat = MTLPixelFormatBGRA8Unorm;
+         
+         // Set the pixel dimensions of the texture
+         textureDescriptor.width = image.size.width;
+         textureDescriptor.height = image.size.height;
+         
+         // Create the texture from the device by using the descriptor
+         id<MTLTexture> texture = [_device newTextureWithDescriptor:textureDescriptor];
+         
+         // Calculate the number of bytes per row in the image.
+         NSUInteger bytesPerRow = 4 * image.size.width;
+         
+         MTLRegion region = {
+         { 0, 0, 0 },         // MTLOrigin
+         { textureDescriptor.width, textureDescriptor.height, 1 }   // MTLSize
+         };
+         
+         // Copy the bytes from the data object into the texture
+         [texture replaceRegion:region
+         mipmapLevel:0
+         withBytes:image.bytes
+         bytesPerRow:bytesPerRow];
+         */
     }
 }
 
 /// Called whenever view changes orientation or is resized
 - (void)mtkView:(nonnull MTKView *)view drawableSizeWillChange:(CGSize)size
 {
-    NSLog(@"Viewport: %dx%d", (int)size.width, (int)size.height);
+    // NSLog(@"Viewport: %dx%d", (int)size.width, (int)size.height);
     // Save the size of the drawable to pass to the vertex shader.
     _viewportSize.x = size.width;
     _viewportSize.y = size.height;
@@ -201,23 +161,17 @@ Implementation of a platform independent renderer class, which performs Metal se
 
         [rendererCommandEncoder setVertexBuffer:_vertices
                                          offset:0
-                                        atIndex:0];
-
-        /*
-        [rendererCommandEncoder setVertexBuffer:_textureCoordinates
-                                         offset:0
-                                        atIndex:1];
-         */
+                                        atIndex:VertexInputIndexVertices];
 
         [rendererCommandEncoder setVertexBytes:&_viewportSize
                                         length:sizeof(_viewportSize)
                                        atIndex:VertexInputIndexViewportSize];
         
         // Set the texture object.  The TextureIndexBaseColor enum value corresponds
-        ///  to the 'colorMap' argument in the 'samplingShader' function because its
+        //   to the 'colorMap' argument in the 'samplingShader' function because its
         //   texture attribute qualifier also uses TextureIndexBaseColor for its index.
         [rendererCommandEncoder setFragmentTexture:_texture
-                                           atIndex:0];
+                                           atIndex:TextureIndexBaseColor];
         
         // Draw the triangles.
         [rendererCommandEncoder drawPrimitives:MTLPrimitiveTypeTriangle

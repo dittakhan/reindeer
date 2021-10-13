@@ -74,7 +74,7 @@ vertexShader2(uint vertexID [[ vertex_id ]],
 // Fragment function
 fragment half4
 samplingShader(RasterizerData in [[stage_in]],
-               texture2d<half> colorTexture [[ texture(0) ]])
+               texture2d<half> colorTexture [[ texture(TextureIndexBaseColor) ]])
 {
     constexpr sampler textureSampler (mag_filter::linear, min_filter::linear);
 
