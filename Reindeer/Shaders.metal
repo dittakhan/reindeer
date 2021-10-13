@@ -28,7 +28,7 @@ struct RasterizerData
 };
 
 // Vertex Function
-vertex RasterizerData vertexShader(constant float4 *position [[ buffer(0)]],
+vertex RasterizerData vertexShader1(constant float4 *position [[ buffer(0)]],
                                    constant packed_float2 *textureCoordinates [[ buffer(1) ]],
                                    constant float4x4 *vertices [[ buffer(2) ]],
                                    uint vid [[ vertex_id ]])
@@ -37,6 +37,36 @@ vertex RasterizerData vertexShader(constant float4 *position [[ buffer(0)]],
 
     out.position = position[vid];
     out.textureCoordinate = textureCoordinates[vid];
+
+    return out;
+}
+
+vertex RasterizerData
+vertexShader2(uint vertexID [[ vertex_id ]],
+              constant Vertex *vertexArray [[ buffer(VertexInputIndexVertices) ]],
+              constant vector_uint2 *viewportSizePointer  [[ buffer(VertexInputIndexViewportSize) ]])
+{
+
+    RasterizerData out;
+
+    // Index into the array of positions to get the current vertex.
+    //   Positions are specified in pixel dimensions (i.e. a value of 100 is 100 pixels from
+    //   the origin)
+    float2 pixelSpacePosition = vertexArray[vertexID].position.xy;
+
+    // Get the viewport size and cast to float.
+    float2 viewportSize = float2(*viewportSizePointer);
+
+    // To convert from positions in pixel space to positions in clip-space,
+    //  divide the pixel coordinates by half the size of the viewport.
+    // Z is set to 0.0 and w to 1.0 because this is 2D sample.
+    out.position = vector_float4(0.0, 0.0, 0.0, 1.0);
+    out.position.xy = pixelSpacePosition / (viewportSize / 2.0);
+
+    // Pass the input textureCoordinate straight to the output RasterizerData. This value will be
+    //   interpolated with the other textureCoordinate values in the vertices that make up the
+    //   triangle.
+    out.textureCoordinate = vertexArray[vertexID].textureCoordinate;
 
     return out;
 }
@@ -54,4 +84,3 @@ samplingShader(RasterizerData in [[stage_in]],
     // return the color of the texture
     return colorSample;
 }
-

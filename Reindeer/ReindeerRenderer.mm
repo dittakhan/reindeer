@@ -6,33 +6,33 @@ Implementation of a platform independent renderer class, which performs Metal se
 #import "ReindeerRenderer.h"
 #import "ShaderTypes.h"
 
-static const uint32_t kCntQuadTexCoords = 6;
-static const uint32_t kSzQuadTexCoords  = kCntQuadTexCoords * sizeof(simd::float2);
-
-static const uint32_t kCntQuadVertices = kCntQuadTexCoords;
-static const uint32_t kSzQuadVertices  = kCntQuadVertices * sizeof(simd::float4);
-
-static const simd::float4 kQuadVertices[kCntQuadVertices] =
-{
-    { -1.0f,  -1.0f, 0.0f, 1.0f },
-    {  1.0f,  -1.0f, 0.0f, 1.0f },
-    { -1.0f,   1.0f, 0.0f, 1.0f },
-    
-    {  1.0f,  -1.0f, 0.0f, 1.0f },
-    { -1.0f,   1.0f, 0.0f, 1.0f },
-    {  1.0f,   1.0f, 0.0f, 1.0f }
-};
-
-static const simd::float2 kQuadTexCoords[kCntQuadTexCoords] =
-{
-    { 0.0f, 0.0f },
-    { 1.0f, 0.0f },
-    { 0.0f, 1.0f },
-    
-    { 1.0f, 0.0f },
-    { 0.0f, 1.0f },
-    { 1.0f, 1.0f }
-};
+//static const uint32_t kCntQuadTexCoords = 6;
+//static const uint32_t kSzQuadTexCoords  = kCntQuadTexCoords * sizeof(simd::float2);
+//
+//static const uint32_t kCntQuadVertices = kCntQuadTexCoords;
+//static const uint32_t kSzQuadVertices  = kCntQuadVertices * sizeof(simd::float4);
+//
+//static const simd::float4 kQuadVertices[kCntQuadVertices] =
+//{
+//    { -1.0f,  -1.0f, 0.0f, 1.0f },
+//    {  1.0f,  -1.0f, 0.0f, 1.0f },
+//    { -1.0f,   1.0f, 0.0f, 1.0f },
+//
+//    {  1.0f,  -1.0f, 0.0f, 1.0f },
+//    { -1.0f,   1.0f, 0.0f, 1.0f },
+//    {  1.0f,   1.0f, 0.0f, 1.0f }
+//};
+//
+//static const simd::float2 kQuadTexCoords[kCntQuadTexCoords] =
+//{
+//    { 0.0f, 0.0f },
+//    { 1.0f, 0.0f },
+//    { 0.0f, 1.0f },
+//
+//    { 1.0f, 0.0f },
+//    { 0.0f, 1.0f },
+//    { 1.0f, 1.0f }
+//};
 
 // Main class performing the rendering
 @implementation ReindeerRenderer
@@ -49,8 +49,11 @@ static const simd::float2 kQuadTexCoords[kCntQuadTexCoords] =
     // The vertex data
     id<MTLBuffer> _vertices;
     
-    // The texture coords data
-    id<MTLBuffer> _textureCoordinates;
+    // The number of vertices in the vertex buffer.
+    NSUInteger _numVertices;
+    
+//    // The texture coords data
+//    id<MTLBuffer> _textureCoordinates;
 
     // The current size of the view
     vector_uint2 _viewportSize;
@@ -65,20 +68,19 @@ static const simd::float2 kQuadTexCoords[kCntQuadTexCoords] =
         _device = view.device;
         
         // Set up a simple MTLBuffer with vertices which include texture coordinates
-        /*
-        static const Vertex vertices[] =
+        static const Vertex quadVertices[] =
         {
             // Pixel positions, Texture coordinates
-            { {  250,  -250 },  { 1.f, 1.f } },
-            { { -250,  -250 },  { 0.f, 1.f } },
-            { { -250,   250 },  { 0.f, 0.f } },
+            { {  500,  -500 },  { 1.f, 1.f } },
+            { { -500,  -500 },  { 0.f, 1.f } },
+            { { -500,   500 },  { 0.f, 0.f } },
 
-            { {  250,  -250 },  { 1.f, 1.f } },
-            { { -250,   250 },  { 0.f, 0.f } },
-            { {  250,   250 },  { 1.f, 0.f } },
+            { {  500,  -500 },  { 1.f, 1.f } },
+            { { -500,   500 },  { 0.f, 0.f } },
+            { {  500,   500 },  { 1.f, 0.f } },
         };
-         */
         
+        /*
         // Create a vertex buffer, and initialize it with the quadVertices array
         _vertices = [_device newBufferWithBytes:kQuadVertices
                                          length:kSzQuadVertices
@@ -87,12 +89,21 @@ static const simd::float2 kQuadTexCoords[kCntQuadTexCoords] =
         _textureCoordinates = [_device newBufferWithBytes:kQuadTexCoords
                                                    length:kSzQuadTexCoords
                                                   options:MTLResourceOptionCPUCacheModeDefault];
+         */
         
+        // Create a vertex buffer, and initialize it with the quadVertices array
+        _vertices = [_device newBufferWithBytes:quadVertices
+                                         length:sizeof(quadVertices)
+                                        options:MTLResourceStorageModeShared];
+        
+        // Calculate the number of vertices by dividing the byte length by the size of each vertex
+        _numVertices = sizeof(quadVertices) / sizeof(Vertex);
+
         // Create the render pipeline
         
         // Load the shaders from the default library
         id<MTLLibrary> defaultLibrary = [_device newDefaultLibrary];
-        id<MTLFunction> vertexFunction = [defaultLibrary newFunctionWithName:@"vertexShader"];
+        id<MTLFunction> vertexFunction = [defaultLibrary newFunctionWithName:@"vertexShader2"];
         id<MTLFunction> fragmentFunction = [defaultLibrary newFunctionWithName:@"samplingShader"];
 
         // Set up a descriptor for creating a pipeline state object
@@ -166,6 +177,7 @@ static const simd::float2 kQuadTexCoords[kCntQuadTexCoords] =
 /// Called whenever view changes orientation or is resized
 - (void)mtkView:(nonnull MTKView *)view drawableSizeWillChange:(CGSize)size
 {
+    NSLog(@"Viewport: %dx%d", (int)size.width, (int)size.height);
     // Save the size of the drawable to pass to the vertex shader.
     _viewportSize.x = size.width;
     _viewportSize.y = size.height;
@@ -183,10 +195,7 @@ static const simd::float2 kQuadTexCoords[kCntQuadTexCoords] =
         id<MTLRenderCommandEncoder> rendererCommandEncoder = [commandBuffer renderCommandEncoderWithDescriptor:renderPassDescriptor];
         
         // Set the region of the drawable to draw into
-        /*
-        [rendererCommandEncoder setViewport:(MTLViewport){0.0, 0.0, (double)_viewportSize.x, (double)_viewportSize.y,
-            -1.0, 1.0 }];
-        */
+        [rendererCommandEncoder setViewport:(MTLViewport){0.0, 0.0, (double)_viewportSize.x, (double)_viewportSize.y, -1.0, 1.0 }];
 
         [rendererCommandEncoder setRenderPipelineState:_pipelineState];
 
@@ -194,14 +203,15 @@ static const simd::float2 kQuadTexCoords[kCntQuadTexCoords] =
                                          offset:0
                                         atIndex:0];
 
+        /*
         [rendererCommandEncoder setVertexBuffer:_textureCoordinates
                                          offset:0
                                         atIndex:1];
+         */
 
-/*        [rendererCommandEncoder setVertexBytes:&_viewportSize
+        [rendererCommandEncoder setVertexBytes:&_viewportSize
                                         length:sizeof(_viewportSize)
                                        atIndex:VertexInputIndexViewportSize];
-*/
         
         // Set the texture object.  The TextureIndexBaseColor enum value corresponds
         ///  to the 'colorMap' argument in the 'samplingShader' function because its
@@ -212,8 +222,7 @@ static const simd::float2 kQuadTexCoords[kCntQuadTexCoords] =
         // Draw the triangles.
         [rendererCommandEncoder drawPrimitives:MTLPrimitiveTypeTriangle
                                    vertexStart:0
-                                   vertexCount:6
-                                 instanceCount:1];
+                                   vertexCount:_numVertices];
 
         [rendererCommandEncoder endEncoding];
 
