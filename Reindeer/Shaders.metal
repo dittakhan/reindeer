@@ -10,7 +10,7 @@
 
 using namespace metal;
 
-//#include "ShaderTypes.h"
+#include "ShaderTypes.h"
 
 struct RasterizerData
 {
@@ -42,8 +42,9 @@ vertex RasterizerData vertexShader(constant float4 *position [[ buffer(0)]],
 }
 
 // Fragment function
-fragment half4 samplingShader(RasterizerData in [[stage_in]],
-                              texture2d<half> colorTexture [[ texture(0) ]])
+fragment half4
+samplingShader(RasterizerData in [[stage_in]],
+               texture2d<half> colorTexture [[ texture(0) ]])
 {
     constexpr sampler textureSampler (mag_filter::linear, min_filter::linear);
 

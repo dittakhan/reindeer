@@ -5,7 +5,6 @@ Implementation of a platform independent renderer class, which performs Metal se
 
 #import "ReindeerRenderer.h"
 #import "ShaderTypes.h"
-#import "AAPLTransforms.h"
 
 static const uint32_t kCntQuadTexCoords = 6;
 static const uint32_t kSzQuadTexCoords  = kCntQuadTexCoords * sizeof(simd::float2);
@@ -126,8 +125,8 @@ static const simd::float2 kQuadTexCoords[kCntQuadTexCoords] =
         
         MTKTextureLoader *loader = [[MTKTextureLoader alloc] initWithDevice: _device];
         NSDictionary *options = @{ MTKTextureLoaderOptionSRGB : @false, MTKTextureLoaderOptionOrigin : @true };
-        // NSDictionary *options = @{ MTKTextureLoaderOptionSRGB: [[NSNumber alloc] initWithBool:NO] };
         NSError *error = nil;
+        
         _texture = [loader newTextureWithCGImage:image.CGImage options: options error: &error];
         if (error)
             NSLog(@"newTextureWithCGImage err: %@", [error localizedDescription]);
