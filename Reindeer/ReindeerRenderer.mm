@@ -139,6 +139,9 @@ Implementation of a platform independent renderer class, which performs Metal se
 {
     // NSLog(@"Viewport: %dx%d", (int)size.width, (int)size.height);
     // Save the size of the drawable to pass to the vertex shader.
+    NSLog(@"contentsScale: %f", view.contentScaleFactor);
+    CGFloat screenScale = [[UIScreen mainScreen] scale];
+    NSLog(@"screenScale: %f", screenScale);
     _viewportSize.x = size.width;
     _viewportSize.y = size.height;
 }
